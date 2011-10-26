@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="classes" path="src"/>
+	<classpathentry kind="var" path="JRE_LIB" sourcepath="JRE_SRC"/>
+	<classpathentry kind="lib" path="lib/appengine-agent.jar"/>
+	<classpathentry kind="lib" path="lib/appengine-agentimpl.jar"/>
+	<classpathentry kind="lib" path="lib/appengine-agentruntime.jar"/>
+	<classpathentry kind="lib" path="lib/appengine-api-1.0-sdk-1.5.5.jar"/>
+	<classpathentry kind="lib" path="lib/appengine-api-labs-1.5.5.jar"/>
+	<classpathentry kind="lib" path="lib/appengine-api-labs.jar"/>
+	<classpathentry kind="lib" path="lib/appengine-api-stubs.jar"/>
+	<classpathentry kind="lib" path="lib/appengine-api.jar"/>
+	<classpathentry kind="lib" path="lib/appengine-jsr107cache-1.5.5.jar"/>
+	<classpathentry kind="lib" path="lib/appengine-local-runtime.jar"/>
+	<classpathentry kind="lib" path="lib/appengine-testing.jar"/>
+	<classpathentry kind="lib" path="lib/appengine-tools-api.jar"/>
+	<classpathentry kind="lib" path="lib/geronimo-jta_1.1_spec-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/jsr107cache-1.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/play"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

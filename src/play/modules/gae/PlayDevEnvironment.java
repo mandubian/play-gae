@@ -82,5 +82,23 @@ public class PlayDevEnvironment implements Environment, LocalServerEnvironment {
         return "localhost";
     }
 
+	@Override
+	public boolean enforceApiDeadlines() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String getHostName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean simulateProductionLatencies() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
 
