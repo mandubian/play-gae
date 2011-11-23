@@ -16,3 +16,4 @@ samples-and-tests/lists-with-gae/.settings
 samples-and-tests/lists-with-gae/true
 .classpath
 .project
+.pydevproject
