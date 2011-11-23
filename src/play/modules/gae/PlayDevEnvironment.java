@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import play.Play;
+import play.mvc.Http;
 import play.mvc.Scope.Session;
 import play.server.Server;
 
@@ -28,30 +29,37 @@ public class PlayDevEnvironment implements Environment, LocalServerEnvironment {
         return instance;
     }
 
+    @Override
     public String getAppId() {
         return Play.applicationPath.getName();
     }
 
+    @Override
     public String getVersionId() {
         return "1.0";
     }
 
+    @Override
     public String getEmail() {
         return Session.current().get("__GAE_EMAIL");
     }
 
+    @Override
     public boolean isLoggedIn() {
         return Session.current().contains("__GAE_EMAIL");
     }
 
+    @Override
     public boolean isAdmin() {
         return Session.current().contains("__GAE_ISADMIN") && Session.current().get("__GAE_ISADMIN").equals("true");
     }
 
-    public String getAuthDomain() {
+    @Override
+   public String getAuthDomain() {
         return "gmail.com";
     }
 
+    @Override
     public String getRequestNamespace() {
         return "";
     }
@@ -63,21 +71,26 @@ public class PlayDevEnvironment implements Environment, LocalServerEnvironment {
     public void setDefaultNamespace(String ns) {
     }
 
+    @Override
     public Map<String, Object> getAttributes() {
         return new HashMap<String, Object>();
     }
 
+    @Override
     public void waitForServerToStart() throws InterruptedException {
     }
 
+    @Override
     public int getPort() {
         return Server.httpPort;
     }
 
+    @Override
     public File getAppDir() {
         return new File(Play.applicationPath, "war");
     }
 
+    @Override
     public String getAddress() {
         return "localhost";
     }
@@ -87,18 +100,35 @@ public class PlayDevEnvironment implements Environment, LocalServerEnvironment {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	@Override
-	public String getHostName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+    
 	@Override
 	public boolean simulateProductionLatencies() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	@Override
+	public String getHostName() {
+		return getBaseUrl();
+	}
+
+	// code stolen from Play core as this function is protected in Router
+	// Gets baseUrl from current request or application.baseUrl in application.conf
+    protected static String getBaseUrl() {
+        if (Http.Request.current() == null) {
+            // No current request is present - must get baseUrl from config
+            String appBaseUrl = Play.configuration.getProperty("application.baseUrl", "application.baseUrl");
+            if (appBaseUrl.endsWith("/")) {
+                // remove the trailing slash
+                appBaseUrl = appBaseUrl.substring(0, appBaseUrl.length()-1);
+            }
+            return appBaseUrl;
+
+        } else {
+            return Http.Request.current().getBase();
+        }
+    }
+
 
 }
 
